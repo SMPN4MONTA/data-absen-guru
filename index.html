@@ -83,12 +83,12 @@
                 <!-- Data Guru & Status -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Guru</label>
+                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Pegawai sekolah</label>
                         <input type="text" id="inputNama" value="Wildan Mukhaladun S.Pd" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" required>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Jabatan Guru</label>
+                        <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Jabatan Pegawai sekolah</label>
                         <input type="text" id="inputJabatan" value="Guru" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" required>
                     </div>
 
@@ -144,15 +144,15 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Nama Kepala Sekolah</label>
-                            <input type="text" id="inputNamaKepsek" value="NAMA KEPALA SEKOLAH, S.Pd., M.Pd." class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" placeholder="Nama Kepala Sekolah beserta Gelar">
+                            <input type="text" id="inputNamaKepsek" value="JUBAIDAH, S.Pd." class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" placeholder="Nama Kepala Sekolah beserta Gelar">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">NIP Kepala Sekolah</label>
-                            <input type="text" id="inputNipKepsek" value="19750101 200003 1 001" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" placeholder="Nomor NIP">
+                            <input type="text" id="inputNipKepsek" value="198202012009012004" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" placeholder="Nomor NIP">
                         </div>
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Link Barcode Tangan Digital</label>
-                            <input type="text" id="inputLinkBarcode" value="https://smpn4monta.sch.id/verifikasi/presensi" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" placeholder="URL atau Link Verifikasi TTD">
+                            <input type="text" id="inputLinkBarcode" value="https://smp-negeri-4-monta.web.app/" class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm" placeholder="URL atau Link Verifikasi TTD">
                         </div>
                     </div>
                 </div>
@@ -212,7 +212,7 @@
 
             <!-- Judul Dokumen -->
             <div class="text-center my-6">
-                <h2 class="text-lg font-extrabold uppercase tracking-wide">LAPORAN REKAP PRESENSI GURU</h2>
+                <h2 class="text-lg font-extrabold uppercase tracking-wide">LAPORAN REKAP PRESENSI PEGAWAI</h2>
                 <p class="text-xs font-semibold text-gray-700 mt-0.5">Periode Laporan: <span id="displayPeriode">SEMUA WAKTU</span></p>
             </div>
 
@@ -223,7 +223,7 @@
                         <tr class="bg-gold-header text-white font-bold border-b border-amber-800">
                             <th class="py-2.5 px-3 text-center border-r border-amber-600/30 w-12">No</th>
                             <th class="py-2.5 px-3 border-r border-amber-600/30">Hari, Tanggal & Jam</th>
-                            <th class="py-2.5 px-3 border-r border-amber-600/30">Nama Guru</th>
+                            <th class="py-2.5 px-3 border-r border-amber-600/30">Nama Pegawai sekolah</th>
                             <th class="py-2.5 px-3 border-r border-amber-600/30">Jabatan</th>
                             <th class="py-2.5 px-3 border-r border-amber-600/30 text-center">Status</th>
                             <th class="py-2.5 px-3">Catatan</th>
@@ -325,9 +325,9 @@
             const skipHolidays = document.getElementById("checkSkipHolidays").checked;
 
             // Ambil Input Kepala Sekolah
-            const namaKepsek = document.getElementById("inputNamaKepsek").value.trim() || "NAMA KEPALA SEKOLAH, S.Pd.";
-            const nipKepsek = document.getElementById("inputNipKepsek").value.trim() || "-";
-            const linkBarcode = document.getElementById("inputLinkBarcode").value.trim() || window.location.href;
+            const namaKepsek = document.getElementById("inputNamaKepsek").value.trim() || "JUBAIDAH, S.Pd.";
+            const nipKepsek = document.getElementById("inputNipKepsek").value.trim() || "198202012009012004";
+            const linkBarcode = document.getElementById("inputLinkBarcode").value.trim() || "https://smp-negeri-4-monta.web.app/";
 
             if (!startDateVal || !endDateVal) {
                 alert("Harap pilih tanggal mulai dan tanggal selesai!");
@@ -347,10 +347,10 @@
             const endFormat = `${end.getDate()} ${BULAN_INDO[end.getMonth()]} ${end.getFullYear()}`;
             document.getElementById("displayPeriode").textContent = `${startFormat.toUpperCase()} s.d. ${endFormat.toUpperCase()}`;
 
-            // Update TTD & Pengesahan Kepala Sekolah
+            // Update TTD & Pengesahan Kepala Sekolah (Wilayah: Sakuru)
             const today = new Date();
             const todayFormatted = `${today.getDate()} ${BULAN_INDO[today.getMonth()]} ${today.getFullYear()}`;
-            document.getElementById("displayTanggalTtd").textContent = `Monta, ${todayFormatted}`;
+            document.getElementById("displayTanggalTtd").textContent = `Sakuru, ${todayFormatted}`;
             document.getElementById("displayNamaKepsek").textContent = namaKepsek;
             document.getElementById("displayNipKepsek").textContent = `NIP. ${nipKepsek}`;
 
@@ -439,7 +439,7 @@
             }
 
             let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "No,Hari Tanggal & Jam,Nama Guru,Jabatan,Status,Catatan\n";
+            csvContent += "No,Hari Tanggal & Jam,Nama Pegawai sekolah,Jabatan,Status,Catatan\n";
 
             generatedData.forEach((row, index) => {
                 const line = [
